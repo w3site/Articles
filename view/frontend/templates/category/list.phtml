@@ -1,0 +1,23 @@
+<div>
+    <?php if ($this->getCategoriesCollection()->count()) : ?>
+        <div>Categories</div>
+        <div>
+            <?php foreach($this->getCategoriesCollection() as $categoryModel) : ?>
+                <div>
+                    <div><a href="<?php echo $this->getHelper()->getUrl($categoryModel) ?>"><?php echo $categoryModel->getTitle() ?></a></div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+    
+    <?php if ($this->getArticlesCollection()->count()) : ?>
+        <div>Articles</div>
+        <div>
+            <?php foreach($this->getArticlesCollection() as $articleModel) : ?>
+                <div>
+                    <div><a href="<?php echo $this->getHelper()->getUrl($articleModel, $this->getCategoryModel()) ?>"><?php echo $articleModel->getTitle() ?></a></div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    <?php endif ?>
+</div>
