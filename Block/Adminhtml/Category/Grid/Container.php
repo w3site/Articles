@@ -18,16 +18,17 @@ namespace WSite\Articles\Block\Adminhtml\Category\Grid;
 class Container extends \Magento\Backend\Block\Widget\Grid\Container
 {
     protected $_backendHelper;
-    protected $_categoryFactory;
+    protected $_categoryRepository;
+    protected $_categoryModel;
     
     public function __construct(
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Backend\Block\Widget\Context $context,
-        \WSite\Articles\Model\CategoryFactory $categoryFactory,
+        \WSite\Articles\Model\Category\Repository $categoryRepository,
         array $data = array()
     ) {
         $this->_backendHelper = $backendHelper;
-        $this->_categoryFactory = $categoryFactory;
+        $this->_categoryRepository = $categoryRepository;
         
         parent::__construct($context, $data);
     }
@@ -40,14 +41,45 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
         $this->_headerText = __('Articles');
         $this->_addButtonLabel = __('Create');
         
-        parent::_construct();
+        //parent::_construct();
     }
     
+    /**
+     * @return $this
+     */
     protected function _prepareLayout()
     {
-        $gridBlock = $this->getChildBlock('grid');
+        $gridBlock = $this->getLayout()->getBlock('wsite_articles_category_grid.grid');
         $filter = $gridBlock->getParam($gridBlock->getVarNameFilter(), null);
         $data = $this->_backendHelper->prepareFilterString($filter);
+        
+        if (isset($data['parent_id']) && $data['parent_id']) {
+            $categoryModel = $this->_categoryRepository->get($data['parent_id']);
+            $this->_categoryModel = $categoryModel;
+        }
+        
+        $rootUrl = $this->getUrl(
+            '*/*/index', 
+            ['filter'=> base64_encode('parent_id=')]
+        );
+
+        $this->addButton(
+            'new',
+            [
+                'label' => 'Create',
+                'onclick' => 'setLocation(\'' . $this->getCreateUrl() . '\')',
+                'class' => 'primary'
+            ]
+        );
+        
+        $this->addButton(
+            'all_items',
+            [
+                'label' => 'All',
+                'onclick' => 'setLocation(\'' . $rootUrl . '\')',
+                'class' => ''
+            ]
+        );
         
         if (
             !isset($data['parent_id']) ||
@@ -61,7 +93,7 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
             $this->addButton(
                 'root_item',
                 [
-                    'label' => 'Root category',
+                    'label' => 'Root',
                     'onclick' => 'setLocation(\'' . $rootUrl . '\')',
                     'class' => ''
                 ]
@@ -69,8 +101,6 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
         }
         
         if (isset($data['parent_id']) && $data['parent_id']) {
-            $categoryModel = $this->_categoryFactory->create()->load($data['parent_id']);
-            
             $parentUrl = $this->getUrl(
                 '*/*/index', 
                 ['filter'=> base64_encode('parent_id=' . $categoryModel->getParentId())]
@@ -79,7 +109,7 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
             $this->addButton(
                 'parent_items',
                 [
-                    'label' => 'Parent category',
+                    'label' => 'Parent',
                     'onclick' => 'setLocation(\'' . $parentUrl . '\')',
                     'class' => ''
                 ]
@@ -88,9 +118,16 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
         
         return parent::_prepareLayout();
     }
-    
+
+    /**
+     * @return string
+     */
     public function getCreateUrl()
     {
+        if ($this->_categoryModel){
+            return $this->getUrl('*/*/edit', ['parent_id' => $this->_categoryModel->getId()]);
+        }
+        
         return $this->getUrl('*/*/edit');
     }
 }
