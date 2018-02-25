@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Helper;
+namespace MagentoYo\Articles\Helper;
 
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
@@ -107,11 +107,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getUrl($model, $categoryModel = null)
     {
-        if ($model instanceof \WSite\Articles\Model\Category) {
+        if ($model instanceof \MagentoYo\Articles\Model\Category) {
             return $this->_getUrlCategory($model);
         }
         
-        if ($model instanceof \WSite\Articles\Model\Catalog) {
+        if ($model instanceof \MagentoYo\Articles\Model\Catalog) {
             return $this->_getUrlArticle($model, $categoryModel);
         }
     }

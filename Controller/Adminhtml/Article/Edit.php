@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Adminhtml\Catalog;
+namespace MagentoYo\Articles\Controller\Adminhtml\Article;
 
 use Magento\Backend\App\Action;
 
@@ -47,7 +47,7 @@ class Edit extends \Magento\Backend\App\Action
         Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
         \Magento\Framework\Registry $registry,
-        \WSite\Articles\Model\CategoryFactory $categoryFactory
+        \MagentoYo\Articles\Model\CategoryFactory $categoryFactory
     ) {
         $this->_resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $registry;
@@ -61,7 +61,7 @@ class Edit extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->_resultPageFactory->create();
-        $resultPage->setActiveMenu('WSite_Articles::content_articles_catalog');
+        $resultPage->setActiveMenu('MagentoYo_Articles::content_articles_article');
         $resultPage->getConfig()->getTitle()->prepend(__('Article'));
 
         return $resultPage;
@@ -72,6 +72,6 @@ class Edit extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Articles::content_articles');
+        return $this->_authorization->isAllowed('MagentoYo_Articles::content_articles');
     }
 }

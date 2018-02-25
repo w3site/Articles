@@ -1,0 +1,79 @@
+.w3site-articles-category-tree {
+    width: 100%;
+    ul {
+        list-style: none;
+        margin-left: 15px;
+    }
+    
+    .show-root{
+        float: left;
+        font-size: 12px;
+        color: #f00;
+        
+        &.selected{
+            color: #f00;
+            font-weight: bold;
+        }
+    }
+    
+    .show-all{
+        float: right;
+        color: #00f;
+        
+        &.selected{
+            font-weight: bold;
+        }
+    }
+    
+    .link-item{
+        clear: both;
+        background: url('../extjs/resources/images/magento/tree/folder.gif') left 3px no-repeat;
+        height: 17px;
+        padding-left: 19px;
+
+        &.opend-in-tree{
+            background: url('../extjs/resources/images/magento/tree/leaf.gif') left 3px no-repeat;
+        }
+        
+        a {
+            color: #000;
+            font-size: 12px;
+        }
+        
+        &:before{
+            content: "";
+            background: url('../extjs/resources/images/magento/tree/elbow-end.gif') left 0px no-repeat;
+            float: left;
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin-left: -38px;
+            margin-top: 1px;
+        }
+        
+        &.selected{
+            a {
+                font-weight: bold;
+                margin-top: 1px;
+            }
+        }
+        
+        .link{
+            float: left;
+        }
+        
+        .edit{
+            float: right;
+        }
+        
+        .articles{
+            float: right;
+            padding-right: 10px;
+        }
+        
+        .create_article{
+            float: right;
+            padding-right: 10px;
+        }
+    }
+}

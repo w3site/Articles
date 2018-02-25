@@ -1,0 +1,6 @@
+<div class="w3site-articles-category-tree">
+    <a class="show-root <?php if ($selectedId === '0') : ?>selected<?php endif ?>" href="<?php echo $this->getUrl('*/*/index', ['filter'=> base64_encode('parent_id=0')]); ?>"><?php echo __('Root') ?></a>
+    <a class="show-all <?php if ($selectedId === '') : ?>selected<?php endif ?>" href="<?php echo $this->getUrl('*/*/index', ['filter'=> base64_encode('parent_id=')]); ?>"><?php echo __('All') ?></a>
+    
+    <?php echo $this->renderTree($tree) ?>
+</div>

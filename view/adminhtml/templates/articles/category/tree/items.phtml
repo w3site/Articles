@@ -1,0 +1,15 @@
+<ul>
+    <?php foreach ($items as $key => $item) : ?>
+        <li>
+            <div class="link-item <?php if ($selectedId == $key) : ?>selected<?php endif ?> <?php if ($item || $selectedId == $key) : ?>opend-in-tree<?php endif ?>">
+                <a class="link" href="<?php echo $this->getUrl('*/*/index', ['filter'=> base64_encode('parent_id=' . $key)]); ?>"><?php echo $this->getCategoryModel($key)->getTitle() ?></a>
+                <a class="edit" href="<?php echo $this->getUrl('*/*/edit', ['entity_id' => $key]) ?>"><?php echo __('Edit') ?></a>
+                <a class="articles" href="<?php echo $this->getUrl('*/article/index', ['category_id' => $key]) ?>"><?php echo __('Articles') ?></a>
+                <a class="create_article" href="<?php echo $this->getUrl('*/article/edit', ['category_ids' => $key]) ?>"><?php echo __('Create Article') ?></a>
+            </div>
+            <?php if ($item) : ?>
+                <?php echo $this->renderTree($item) ?>
+            <?php endif ?>
+        </li>
+    <?php endforeach ?>
+</ul>

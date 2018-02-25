@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Block\Adminhtml\Category\Grid\Column;
+namespace MagentoYo\Articles\Block\Adminhtml\Category\Grid\Column;
 
 use Magento\Backend\Block\Widget\Grid\Column;
 

@@ -9,7 +9,7 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="wsite_articles_catalog_grid_data_source" xsi:type="string">WSite\Articles\Model\ResourceModel\Catalog\Grid\Collection</item>
+                <item name="magentoyo_articles_article_grid_data_source" xsi:type="string">MagentoYo\Articles\Model\ResourceModel\Catalog\Grid\Collection</item>
             </argument>
         </arguments>
     </type>

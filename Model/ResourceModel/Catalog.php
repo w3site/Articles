@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model\ResourceModel;
+namespace MagentoYo\Articles\Model\ResourceModel;
 
 class Catalog extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -22,6 +22,6 @@ class Catalog extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('wsite_articles_catalog', 'entity_id');
+        $this->_init('magentoyo_articles_article', 'entity_id');
     }
 }

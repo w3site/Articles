@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Adminhtml\Category;
+namespace MagentoYo\Articles\Controller\Adminhtml\Category;
 
 class Save extends \Magento\Backend\App\Action
 {
@@ -21,7 +21,7 @@ class Save extends \Magento\Backend\App\Action
     
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \WSite\Articles\Model\CategoryFactory $categoryFactory
+        \MagentoYo\Articles\Model\CategoryFactory $categoryFactory
     ) {
         $this->_categoryFactory = $categoryFactory;
         
@@ -80,6 +80,6 @@ class Save extends \Magento\Backend\App\Action
     
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Articles::content_articles');
+        return $this->_authorization->isAllowed('MagentoYo_Articles::content_articles');
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="WSite_Articles::content_articles" title="Articles" translate="title" module="WSite_Articles" sortOrder="20" parent="Magento_Backend::content" resource="WSite_Articles::content_articles"/>
-        <add id="WSite_Articles::content_articles_category" title="Category" module="WSite_Articles" sortOrder="100" parent="WSite_Articles::content_articles" action="wsite_articles/category" resource="WSite_Articles::content_articles_category"/>
-        <add id="WSite_Articles::content_articles_catalog" title="Catalog" module="WSite_Articles" sortOrder="100" parent="WSite_Articles::content_articles" action="wsite_articles/catalog" resource="WSite_Articles::content_articles_catalog"/>
+        <add id="MagentoYo_Articles::content_articles" title="Articles" translate="title" module="MagentoYo_Articles" sortOrder="20" parent="Magento_Backend::content" resource="MagentoYo_Articles::content_articles"/>
+        <add id="MagentoYo_Articles::content_articles_category" title="Category" module="MagentoYo_Articles" sortOrder="100" parent="MagentoYo_Articles::content_articles" action="magentoyo_articles/category" resource="MagentoYo_Articles::content_articles_category"/>
+        <add id="MagentoYo_Articles::content_articles_article" title="Article" module="MagentoYo_Articles" sortOrder="100" parent="MagentoYo_Articles::content_articles" action="magentoyo_articles/article" resource="MagentoYo_Articles::content_articles_article"/>
     </menu>
 </config>

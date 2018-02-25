@@ -13,9 +13,9 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Ui\DataProvider\CategoryDataProvider;
+namespace MagentoYo\Articles\Ui\DataProvider\CategoryDataProvider;
 
-use WSite\Articles\Model\ResourceModel\Category\CollectionFactory;
+use MagentoYo\Articles\Model\ResourceModel\Category\CollectionFactory;
 
 class Form extends \Magento\Ui\DataProvider\AbstractDataProvider
 {

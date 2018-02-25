@@ -13,9 +13,9 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Article;
+namespace MagentoYo\Articles\Controller\Article;
 
-use \WSite\Articles\Helper\Data as HelperData;
+use \MagentoYo\Articles\Helper\Data as HelperData;
 
 class View extends \Magento\Framework\App\Action\Action
 {
@@ -27,7 +27,7 @@ class View extends \Magento\Framework\App\Action\Action
     
     public function __construct(
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \WSite\Articles\Model\CatalogFactory $catalogModelFactory,
+        \MagentoYo\Articles\Model\CatalogFactory $catalogModelFactory,
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Action\Context $context
     ) {

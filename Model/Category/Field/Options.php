@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model\Category\Field;
+namespace MagentoYo\Articles\Model\Category\Field;
 
 class Options implements \Magento\Framework\Option\ArrayInterface
 {
@@ -21,7 +21,7 @@ class Options implements \Magento\Framework\Option\ArrayInterface
     protected $_oprionsArray;
     
     public function __construct(
-        \WSite\Articles\Model\CategoryFactory $categoryFactory
+        \MagentoYo\Articles\Model\CategoryFactory $categoryFactory
     ) {
         $this->_categoryFactory = $categoryFactory;
     }

@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Block\Adminhtml\Category\Grid;
+namespace MagentoYo\Articles\Block\Adminhtml\Category\Grid;
 
 class Container extends \Magento\Backend\Block\Widget\Grid\Container
 {
@@ -24,7 +24,7 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
     public function __construct(
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Backend\Block\Widget\Context $context,
-        \WSite\Articles\Model\Category\Repository $categoryRepository,
+        \MagentoYo\Articles\Model\Category\Repository $categoryRepository,
         array $data = array()
     ) {
         $this->_backendHelper = $backendHelper;
@@ -37,7 +37,7 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
     )
     {
         $this->_controller = 'adminhtml_category_grid';
-        $this->_blockGroup = 'WSite_Articles';
+        $this->_blockGroup = 'MagentoYo_Articles';
         $this->_headerText = __('Articles');
         $this->_addButtonLabel = __('Create');
         
@@ -49,7 +49,7 @@ class Container extends \Magento\Backend\Block\Widget\Grid\Container
      */
     protected function _prepareLayout()
     {
-        $gridBlock = $this->getLayout()->getBlock('wsite_articles_category_grid.grid');
+        $gridBlock = $this->getLayout()->getBlock('magentoyo_articles_category_grid.grid');
         $filter = $gridBlock->getParam($gridBlock->getVarNameFilter(), null);
         $data = $this->_backendHelper->prepareFilterString($filter);
         

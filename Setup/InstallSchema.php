@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Setup;
+namespace MagentoYo\Articles\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -35,10 +35,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer->startSetup();
 
         /**
-         * Create table 'wsite_articles_category'
+         * Create table 'magentoyo_articles_category'
          */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('wsite_articles_category'))
+            ->newTable($installer->getTable('magentoyo_articles_category'))
             ->addColumn(
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -99,10 +99,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer->getConnection()->createTable($table);
 
         /**
-         * Create table 'wsite_articles_catalog'
+         * Create table 'magentoyo_articles_article'
          */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('wsite_articles_catalog'))
+            ->newTable($installer->getTable('magentoyo_articles_article'))
             ->addColumn(
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -156,10 +156,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer->getConnection()->createTable($table);
 
         /**
-         * Create table 'wsite_articles_bound'
+         * Create table 'magentoyo_articles_bound'
          */
         $table = $installer->getConnection()
-            ->newTable($installer->getTable('wsite_articles_bound'))
+            ->newTable($installer->getTable('magentoyo_articles_bound'))
             ->addColumn(
                 'row_id',
                 \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
@@ -182,7 +182,7 @@ class InstallSchema implements InstallSchemaInterface
                 'Category ID'
             )
             ->addIndex(
-                $installer->getIdxName('wsite_articles_bound', ['category_id']),
+                $installer->getIdxName('magentoyo_articles_bound', ['category_id']),
                 ['category_id']
             )
             ->setComment('Bound');

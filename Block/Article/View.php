@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Block\Article;
+namespace MagentoYo\Articles\Block\Article;
 
 class View extends \Magento\Framework\View\Element\Template
 {
@@ -31,7 +31,7 @@ class View extends \Magento\Framework\View\Element\Template
     
     protected function _construct()
     {
-        $this->setTemplate('WSite_Articles::article/view.phtml');
+        $this->setTemplate('MagentoYo_Articles::article/view.phtml');
         parent::_construct();
     }
     

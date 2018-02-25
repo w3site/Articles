@@ -13,9 +13,9 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Category;
+namespace MagentoYo\Articles\Controller\Category;
 
-use \WSite\Articles\Helper\Data as HelperData;
+use \MagentoYo\Articles\Helper\Data as HelperData;
 
 class View extends \Magento\Framework\App\Action\Action
 {
@@ -25,7 +25,7 @@ class View extends \Magento\Framework\App\Action\Action
     protected $_resultPageFactory;
     
     /**
-     * @var \WSite\Articles\Model\CategoryFactory
+     * @var \MagentoYo\Articles\Model\CategoryFactory
      */
     protected $_categoryModelFactory;
     
@@ -36,14 +36,14 @@ class View extends \Magento\Framework\App\Action\Action
     
     /**
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \WSite\Articles\Model\CategoryFactory $categoryModelFactory
+     * @param \MagentoYo\Articles\Model\CategoryFactory $categoryModelFactory
      * @param \Magento\Framework\Registry $coreRegistry
      * @param \Magento\Framework\App\Action\Context $context
      * @return void
      */
     public function __construct(
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \WSite\Articles\Model\CategoryFactory $categoryModelFactory,
+        \MagentoYo\Articles\Model\CategoryFactory $categoryModelFactory,
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Action\Context $context
     ) {

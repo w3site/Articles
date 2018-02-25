@@ -13,14 +13,14 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model;
+namespace MagentoYo\Articles\Model;
 
-use \WSite\Articles\Helper\Data as HelperData;
+use \MagentoYo\Articles\Helper\Data as HelperData;
 
 class Category extends \Magento\Framework\Model\AbstractModel
 {
     /**
-     * @var \WSite\Articles\Model\CategoryFactory
+     * @var \MagentoYo\Articles\Model\CategoryFactory
      */
     protected $_modelCategoryFactory;
     
@@ -34,23 +34,18 @@ class Category extends \Magento\Framework\Model\AbstractModel
      */
     protected $_storeModel;
     
-    /**
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\UrlRewrite\Model\UrlRewriteFactory $modelUrlRewriteFactory
-     * @param \WSite\Articles\Model\CategoryFactory $modelCategoryFactory
-     * @param \WSite\Articles\Model\ResourceModel\Category\CollectionFactory $modelCategoryCollectionFactory
-     * @param \Magento\Store\Model\System\Store $storeModel
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
-     * @param array $data
-     */
+    protected $_boundCatalogCollectionFactory;
+    
+    protected $_modelUrlRewriteCollectionFactory;
+    
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\UrlRewrite\Model\UrlRewriteFactory $modelUrlRewriteFactory,
-        \WSite\Articles\Model\CategoryFactory $modelCategoryFactory,
-        \WSite\Articles\Model\ResourceModel\Category\CollectionFactory $modelCategoryCollectionFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCatalogCollectionFactory,
+        \MagentoYo\Articles\Model\CategoryFactory $modelCategoryFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Category\CollectionFactory $modelCategoryCollectionFactory,
+        \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteCollectionFactory $modelUrlRewriteCollectionFactory,
         \Magento\Store\Model\System\Store $storeModel,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
@@ -60,6 +55,8 @@ class Category extends \Magento\Framework\Model\AbstractModel
         $this->_modelCategoryCollectionFactory = $modelCategoryCollectionFactory;
         $this->_modelUrlRewriteFactory = $modelUrlRewriteFactory;
         $this->_storeModel = $storeModel;
+        $this->_boundCatalogCollectionFactory = $boundCatalogCollectionFactory;
+        $this->_modelUrlRewriteCollectionFactory = $modelUrlRewriteCollectionFactory;
         
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
@@ -70,7 +67,7 @@ class Category extends \Magento\Framework\Model\AbstractModel
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('WSite\Articles\Model\ResourceModel\Category');
+        $this->_init('MagentoYo\Articles\Model\ResourceModel\Category');
     }
     
     /**
@@ -122,6 +119,13 @@ class Category extends \Magento\Framework\Model\AbstractModel
         
         // @ TODO Multistore restriction
         $stores = $this->_storeModel->getStoreCollection();
+        
+        $urlRewriteCollection = $this->_modelUrlRewriteFactory->create()->getCollection();
+        $urlRewriteCollection->addFieldToFilter('entity_type', 'articles_category');
+        $urlRewriteCollection->addFieldToFilter('entity_id', $this->getId());
+        foreach ($urlRewriteCollection as $modelUrl) {
+            $modelUrl->delete();
+        }
         
         foreach ($stores as $storeModel) {
             $modelUrlRewrite = $this->_modelUrlRewriteFactory->create();
@@ -209,5 +213,27 @@ class Category extends \Magento\Framework\Model\AbstractModel
         }
         
         return HelperData::toolUriTransform($title);
+    }
+    
+    public function beforeDelete()
+    {
+        $id = $this->getId();
+        
+        $boundCatalogCollection = $this->_boundCatalogCollectionFactory->create();
+        $boundCatalogCollection->addFieldToFilter('category_id', $id);
+        $boundCatalogCollection->walk('delete');
+        
+        foreach ($this->_storeModel->getStoreCollection() as $storeModel) {
+            $modelUrlRewrite = $this->_modelUrlRewriteCollectionFactory->create();
+            $modelUrlRewrite->addStoreFilter($storeModel->getId());
+            $modelUrlRewrite->addFieldToFilter('entity_type', 'articles_category');
+            $modelUrlRewrite->addFieldToFilter('entity_id', $id);
+            
+            foreach ($modelUrlRewrite as $rewriteModel) {
+                $rewriteModel->delete();
+            }
+        }
+
+        return parent::beforeDelete();
     }
 }

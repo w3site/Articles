@@ -13,12 +13,12 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model\ResourceModel\Catalog;
+namespace MagentoYo\Articles\Model\ResourceModel\Catalog;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
-     * @var \WSite\Articles\Model\ResourceModel\Bound\CollectionFactory
+     * @var \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory
      */
     protected $_boundCollectionFactory;
     
@@ -27,7 +27,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
      * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \WSite\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory
+     * @param \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory
      * @param \Magento\Framework\DB\Adapter\AdapterInterface $connection
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
      * @return type
@@ -37,7 +37,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         \Psr\Log\LoggerInterface $logger,
         \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
         \Magento\Framework\Event\ManagerInterface $eventManager,
-        \WSite\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
         \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
@@ -59,8 +59,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected function _construct()
     {
         $this->_init(
-            'WSite\Articles\Model\Catalog',
-            'WSite\Articles\Model\ResourceModel\Catalog'
+            'MagentoYo\Articles\Model\Catalog',
+            'MagentoYo\Articles\Model\ResourceModel\Catalog'
         );
     }
     
@@ -71,13 +71,13 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         if ($leftJoin) {
             $this->getSelect()->joinLeft(
-                ['bound' => $this->getTable('wsite_articles_bound')],
+                ['bound' => $this->getTable('magentoyo_articles_bound')],
                 'main_table.entity_id = bound.article_id',
                 ['category_id'=>'bound.category_id']
             );
         } else {
             $this->join(
-                ['bound' => $this->getTable('wsite_articles_bound')],
+                ['bound' => $this->getTable('magentoyo_articles_bound')],
                 'main_table.entity_id = bound.article_id',
                 ['category_id'=>'bound.category_id']
             );

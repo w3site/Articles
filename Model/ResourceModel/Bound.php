@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model\ResourceModel;
+namespace MagentoYo\Articles\Model\ResourceModel;
 
 class Bound extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -21,7 +21,7 @@ class Bound extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     
     public function __construct(
         \Magento\Framework\Model\ResourceModel\Db\Context $context,
-        \WSite\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
         $connectionName = null
     ) {
         $this->_boundCollectionFactory = $boundCollectionFactory;
@@ -31,7 +31,7 @@ class Bound extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     
     protected function _construct()
     {
-        $this->_init('wsite_articles_bound', 'row_id');
+        $this->_init('magentoyo_articles_bound', 'row_id');
     }
     
     public function deleteByProduct($id)

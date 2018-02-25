@@ -12,7 +12,7 @@
  * @copyright   Copyright (c) 2015-2016 Tereta Alexander. (http://www.w3site.org)
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-namespace WSite\Articles\Block\Adminhtml\Catalog\Edit;
+namespace MagentoYo\Articles\Block\Adminhtml\Catalog\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Backend\Block\Widget\Context;

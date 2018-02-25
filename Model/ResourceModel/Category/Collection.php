@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model\ResourceModel\Category;
+namespace MagentoYo\Articles\Model\ResourceModel\Category;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -23,8 +23,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected function _construct()
     {
         $this->_init(
-            'WSite\Articles\Model\Category',
-            'WSite\Articles\Model\ResourceModel\Category'
+            'MagentoYo\Articles\Model\Category',
+            'MagentoYo\Articles\Model\ResourceModel\Category'
         );
     }
 }

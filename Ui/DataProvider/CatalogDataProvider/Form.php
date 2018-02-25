@@ -13,9 +13,9 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Ui\DataProvider\CatalogDataProvider;
+namespace MagentoYo\Articles\Ui\DataProvider\CatalogDataProvider;
 
-use WSite\Articles\Model\ResourceModel\Catalog\CollectionFactory;
+use MagentoYo\Articles\Model\ResourceModel\Catalog\CollectionFactory;
 
 class Form extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
@@ -58,7 +58,9 @@ class Form extends \Magento\Ui\DataProvider\AbstractDataProvider
         $dataCollection = $this->getCollection()->addCategories();
         
         foreach ($dataCollection as $item) {
-            $this->_loadedData[$item['entity_id']] = $item->getData();
+            $itemData = $item->getData();
+            $itemData['rewrite_path'] = $item->getUrls();
+            $this->_loadedData[$item['entity_id']] = $itemData;
         }
         
         if (!$this->_loadedData && $categoryIds = $this->_context->getRequestParam('category_ids')) {

@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Block\Category;
+namespace MagentoYo\Articles\Block\Category;
 
 class View extends \Magento\Framework\View\Element\Template
 {
@@ -23,12 +23,12 @@ class View extends \Magento\Framework\View\Element\Template
     protected $_coreRegistry;
 
     /**
-     * @var \WSite\Articles\Model\ResourceModel\Category\CollectionFactory
+     * @var \MagentoYo\Articles\Model\ResourceModel\Category\CollectionFactory
      */
     protected $_categoryFactory;
 
     /**
-     * @var \WSite\Articles\Model\ResourceModel\Category\Collection
+     * @var \MagentoYo\Articles\Model\ResourceModel\Category\Collection
      */
     protected $_categoriesCollection;
     
@@ -48,26 +48,26 @@ class View extends \Magento\Framework\View\Element\Template
     protected $_catalogCollectionFactory;
     
     /**
-     * @var \WSite\Articles\Helper\Data
+     * @var \MagentoYo\Articles\Helper\Data
      */
     protected $_helper;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
-     * @param \WSite\Articles\Model\CategoryFactory $categoryFactory
-     * @param \WSite\Articles\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory
-     * @param \WSite\Articles\Model\ResourceModel\Catalog\CollectionFactory $catalogCollectionFactory
-     * @param \WSite\Articles\Helper\Data $helper
+     * @param \MagentoYo\Articles\Model\CategoryFactory $categoryFactory
+     * @param \MagentoYo\Articles\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory
+     * @param \MagentoYo\Articles\Model\ResourceModel\Catalog\CollectionFactory $catalogCollectionFactory
+     * @param \MagentoYo\Articles\Helper\Data $helper
      * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $coreRegistry,
-        \WSite\Articles\Model\CategoryFactory $categoryFactory,
-        \WSite\Articles\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
-        \WSite\Articles\Model\ResourceModel\Catalog\CollectionFactory $catalogCollectionFactory,
-        \WSite\Articles\Helper\Data $helper,
+        \MagentoYo\Articles\Model\CategoryFactory $categoryFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Catalog\CollectionFactory $catalogCollectionFactory,
+        \MagentoYo\Articles\Helper\Data $helper,
         array $data = array()
     ) {
         $this->_coreRegistry = $coreRegistry;
@@ -84,12 +84,12 @@ class View extends \Magento\Framework\View\Element\Template
      */
     protected function _construct()
     {
-        $this->setTemplate('WSite_Articles::category/list.phtml');
+        $this->setTemplate('MagentoYo_Articles::category/list.phtml');
         parent::_construct();
     }
     
     /**
-     * @return \WSite\Articles\Model\Category
+     * @return \MagentoYo\Articles\Model\Category
      */
     public function getCategoryModel()
     {
@@ -97,7 +97,7 @@ class View extends \Magento\Framework\View\Element\Template
     }
     
     /**
-     * @return \WSite\Articles\Model\ResourceModel\Category\Collection
+     * @return \MagentoYo\Articles\Model\ResourceModel\Category\Collection
      */
     public function getCategoriesCollection()
     {
@@ -141,7 +141,7 @@ class View extends \Magento\Framework\View\Element\Template
     }
     
     /**
-     * @return WSite\Articles\Helper\Data
+     * @return MagentoYo\Articles\Helper\Data
      */
     public function getHelper()
     {

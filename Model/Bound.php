@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Model;
+namespace MagentoYo\Articles\Model;
 
 class Bound extends \Magento\Framework\Model\AbstractModel
 {
@@ -22,7 +22,7 @@ class Bound extends \Magento\Framework\Model\AbstractModel
     public function __construct(
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
-        \WSite\Articles\Model\BoundFactory $boundFactory,
+        \MagentoYo\Articles\Model\BoundFactory $boundFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = array()
@@ -35,7 +35,7 @@ class Bound extends \Magento\Framework\Model\AbstractModel
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('WSite\Articles\Model\ResourceModel\Bound');
+        $this->_init('MagentoYo\Articles\Model\ResourceModel\Bound');
     }
     
     public function saveBound($articleId, $categoryIds)

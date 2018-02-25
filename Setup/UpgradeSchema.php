@@ -13,13 +13,13 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Setup;
+namespace MagentoYo\Articles\Setup;
 
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\DB\Ddl\Table;
-use WSite\Articles\Helper\Data as HelperData;
+use MagentoYo\Articles\Helper\Data as HelperData;
 
 class UpgradeSchema implements UpgradeSchemaInterface
 {
@@ -49,7 +49,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default'  => '',
             'after'    => 'description'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_category'), 'seo_url_key', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_category'), 'seo_url_key', $column);
         
         $column = [
             'type'     => Table::TYPE_TEXT,
@@ -59,7 +59,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default'  => '',
             'after'    => 'seo_description'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_category'), 'seo_keywords', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_category'), 'seo_keywords', $column);
         
         $column = [
             'type'     => Table::TYPE_TEXT,
@@ -69,7 +69,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default'  => '',
             'after'    => 'description'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_category'), 'category_path', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_category'), 'category_path', $column);
         
         $column = [
             'type' => Table::TYPE_SMALLINT,
@@ -78,7 +78,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default' => HelperData::SEO_ROBOTS_INDEX_FOLLOW,
             'after'    => 'seo_keywords'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_category'), 'seo_robots', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_category'), 'seo_robots', $column);
         
         $column = [
             'type'     => Table::TYPE_TEXT,
@@ -88,7 +88,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default'  => '',
             'after'    => 'article'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_catalog'), 'seo_url_key', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_article'), 'seo_url_key', $column);
         
         $column = [
             'type'     => Table::TYPE_TEXT,
@@ -98,7 +98,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default'  => '',
             'after'    => 'seo_description'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_catalog'), 'seo_keywords', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_article'), 'seo_keywords', $column);
         
         $column = [
             'type' => Table::TYPE_SMALLINT,
@@ -107,7 +107,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             'default' => HelperData::SEO_ROBOTS_INDEX_FOLLOW,
             'after'    => 'seo_keywords'
         ];
-        $connection->addColumn($setup->getTable('wsite_articles_catalog'), 'seo_robots', $column);
+        $connection->addColumn($setup->getTable('magentoyo_articles_article'), 'seo_robots', $column);
         
     }
 }

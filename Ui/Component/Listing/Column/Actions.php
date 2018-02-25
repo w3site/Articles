@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Ui\Component\Listing\Column;
+namespace MagentoYo\Articles\Ui\Component\Listing\Column;
  
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -23,8 +23,8 @@ use Magento\Framework\UrlInterface;
 class Actions extends Column
 {
     /** Url path */
-    const URL_PATH_EDIT = 'wsite_articles/catalog/edit';
-    const URL_PATH_DELETE = 'wsite_articles/catalog/massRemove';
+    const URL_PATH_EDIT = 'magentoyo_articles/article/edit';
+    const URL_PATH_DELETE = 'magentoyo_articles/article/massRemove';
  
     /** @var UrlInterface */
     protected $urlBuilder;

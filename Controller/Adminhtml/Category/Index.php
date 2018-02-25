@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Adminhtml\Category;
+namespace MagentoYo\Articles\Controller\Adminhtml\Category;
 
 class Index extends \Magento\Backend\App\Action
 {
@@ -27,7 +27,7 @@ class Index extends \Magento\Backend\App\Action
      */
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Articles::content_articles');
+        return $this->_authorization->isAllowed('MagentoYo_Articles::content_articles');
     }
     
     /**

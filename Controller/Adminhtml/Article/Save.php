@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Controller\Adminhtml\Catalog;
+namespace MagentoYo\Articles\Controller\Adminhtml\Article;
 
 class Save extends \Magento\Backend\App\Action
 {
@@ -22,8 +22,8 @@ class Save extends \Magento\Backend\App\Action
     
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \WSite\Articles\Model\CatalogFactory $categoryFactory,
-        \WSite\Articles\Model\BoundFactory $boundFactory
+        \MagentoYo\Articles\Model\CatalogFactory $categoryFactory,
+        \MagentoYo\Articles\Model\BoundFactory $boundFactory
     ) {
         $this->_categoryFactory = $categoryFactory;
         $this->_boundFactory = $boundFactory;
@@ -48,6 +48,10 @@ class Save extends \Magento\Backend\App\Action
                 unset($data['entity_id']);
             }
 
+            if (isset($data['category_ids']) && is_string($data['category_ids'])){
+                $data['category_ids'] = [$data['category_ids']];
+            }
+            
             try {
                 $model->setData($data)
                     ->autoFill()
@@ -85,6 +89,6 @@ class Save extends \Magento\Backend\App\Action
     
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('WSite_Articles::content_articles');
+        return $this->_authorization->isAllowed('MagentoYo_Articles::content_articles');
     }
 }

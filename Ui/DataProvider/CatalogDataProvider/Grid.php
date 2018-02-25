@@ -13,7 +13,7 @@
  * @license     http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 
-namespace WSite\Articles\Ui\DataProvider\CatalogDataProvider;
+namespace MagentoYo\Articles\Ui\DataProvider\CatalogDataProvider;
 
 class Grid extends \Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 {
@@ -27,7 +27,7 @@ class Grid extends \Magento\Framework\View\Element\UiComponent\DataProvider\Data
         \Magento\Framework\Api\Search\SearchCriteriaBuilder $searchCriteriaBuilder,
         \Magento\Framework\App\RequestInterface $request,
         \Magento\Framework\Api\FilterBuilder $filterBuilder,
-        \WSite\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
+        \MagentoYo\Articles\Model\ResourceModel\Bound\CollectionFactory $boundCollectionFactory,
         array $meta = array(),
         array $data = array()
     ) {
@@ -88,6 +88,9 @@ class Grid extends \Magento\Framework\View\Element\UiComponent\DataProvider\Data
         }
         
         foreach ($data['items'] as &$item) {
+            if (!isset($items[$item['entity_id']])) {
+                continue;
+            }
             $item['category_id'] = implode(', ', $items[$item['entity_id']]);
         }
         

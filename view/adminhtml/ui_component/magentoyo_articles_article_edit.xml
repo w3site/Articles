@@ -9,10 +9,10 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">wsite_articles_category_edit.category_form_data_source</item>
-            <item name="deps" xsi:type="string">wsite_articles_category_edit.category_form_data_source</item>
+            <item name="provider" xsi:type="string">magentoyo_articles_article_edit.catalog_form_data_source</item>
+            <item name="deps" xsi:type="string">magentoyo_articles_article_edit.catalog_form_data_source</item>
         </item>
-        <item name="label" xsi:type="string" translate="true">Category Information</item>
+        <item name="label" xsi:type="string" translate="true">Catalog Information</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
             <item name="back" xsi:type="array">
@@ -22,7 +22,7 @@
                 <item name="url" xsi:type="string">*/*/index</item>
             </item>
             
-            <item name="delete" xsi:type="string">WSite\Articles\Block\Adminhtml\Category\Edit\DeleteButton</item>
+            <item name="delete" xsi:type="string">MagentoYo\Articles\Block\Adminhtml\Catalog\Edit\DeleteButton</item>
             
             <item name="save_and_continue" xsi:type="array">
                 <item name="name" xsi:type="string">save_and_continue</item>
@@ -43,15 +43,15 @@
         </item>
         <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
     </argument>
-    <dataSource name="category_form_data_source">
+    <dataSource name="catalog_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">WSite\Articles\Ui\DataProvider\CategoryDataProvider\Form</argument>
-            <argument name="name" xsi:type="string">category_form_data_source</argument>
+            <argument name="class" xsi:type="string">MagentoYo\Articles\Ui\DataProvider\CatalogDataProvider\Form</argument>
+            <argument name="name" xsi:type="string">catalog_form_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
             <argument name="requestFieldName" xsi:type="string">entity_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="submit_url" xsi:type="url" path="wsite_articles/category/save"/>
+                    <item name="submit_url" xsi:type="url" path="*/*/save"/>
                 </item>
             </argument>
         </argument>
@@ -75,82 +75,84 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
                     <item name="disabled" xsi:type="boolean">true</item>
                 </item>
             </argument>
         </field>
-        <field name="parent_id">
+        <field name="rewrite_path">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
-                    <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
-                    <item name="label" xsi:type="string" translate="true">Parent ID</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
+                    <item name="label" xsi:type="string" translate="true">Rewrite path</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
                 </item>
             </argument>
         </field>
+
         <field name="status">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Enabled</item>
                 </item>
             </argument>
         </field>
-        
-<!--        <field name="storeviews">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
-                <item name="config" xsi:type="array">
-                    <item name="dataType" xsi:type="string">int</item>
-                    <item name="label" xsi:type="string" translate="true">Store View</item>
-                    <item name="formElement" xsi:type="string">multiselect</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
-                    <item name="dataScope" xsi:type="string">store_id</item>
-                    <item name="default" xsi:type="string">0</item>
-                </item>
-            </argument>
-        </field>-->
         
         <field name="sorting">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Sorting</item>
                 </item>
             </argument>
         </field>
+        
+        <field name="category_ids">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">MagentoYo\Articles\Model\Category\Field\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Categories</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="componentType" xsi:type="string">field</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                    <item name="chipsEnabled" xsi:type="boolean">true</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="component" xsi:type="string">Magento_Catalog/js/components/new-category</item>
+                    <item name="levelsVisibility" xsi:type="string">1</item>
+                    <item name="elementTmpl" xsi:type="string" translate="true">ui/grid/filters/elements/ui-select</item>
+                </item>
+            </argument>
+        </field>
+        
         <field name="title">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
-                    <item name="required" xsi:type="boolean">true</item>
-                    <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
                 </item>
             </argument>
         </field>
-        
-        <field name="description">
+
+        <field name="article">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="label" xsi:type="string" translate="true">Article</item>
                     <item name="formElement" xsi:type="string">wysiwyg</item>
                     <item name="template" xsi:type="string">ui/form/field</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="wysiwyg" xsi:type="boolean">true</item>
-                    <item name="dataScope" xsi:type="string">description</item>
+                    <item name="dataScope" xsi:type="string">article</item>
                     
                     <item name="wysiwygConfigData" xsi:type="array">
                         <item name="files_browser_window_url" xsi:type="boolean">true</item>
@@ -159,7 +161,7 @@
                         <item name="add_widgets" xsi:type="boolean">false</item>
                         <item name="add_images" xsi:type="boolean">true</item>
                         <item name="mode" xsi:type="string">textareas</item>
-                        <item name="height" xsi:type="string">300px</item>
+                        <item name="height" xsi:type="string">500px</item>
                         <item name="settings" xsi:type="array">
                             <item name="force_br_newlines" xsi:type="boolean">false</item>
                             <item name="force_p_newlines" xsi:type="boolean">false</item>
@@ -193,7 +195,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
                 </item>
             </argument>
@@ -203,7 +205,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">textarea</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Description</item>
                 </item>
             </argument>
@@ -213,7 +215,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">textarea</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Keywords</item>
                 </item>
             </argument>
@@ -241,7 +243,7 @@
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="formElement" xsi:type="string">select</item>
-                    <item name="source" xsi:type="string">category_form_data_source</item>
+                    <item name="source" xsi:type="string">catalog_form_data_source</item>
                     <item name="label" xsi:type="string" translate="true">Robots</item>
                 </item>
             </argument>
